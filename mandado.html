@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBI - Cortex</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Just an image -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <div class="d-flex align-items-center">
+                    <img src="img/fbi_brasao.png" alt="" width="10%" class="d-flex align-top">
+                    <h5 class="ms-3">FBI - Cortex</h5>
+                </div>
+            </a>
+        </div>
+    </nav>
+    <div class="container" id="container">
+        <!-- Modal -->
+        <div class="modal fade" id="modalFoto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Foto do Auto</h5>
+                        <button type="button" id="fecharModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Clique com o botão direito e copie a imagem.</p>
+                        <div id="fotoPrisao"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="fecharModal1" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section id="showOnPrint">
+            <div class="row mt-3 justify-content-center">
+                <div class="col-2">
+                    <img src="img/americalogo.png" alt="Brasão da Cidade Evolution America - RP" width="100%">
+                </div>
+                <div class="col-8 align-self-center ">
+                    <h5 class="text-center">DEPARTAMENTO DE SEGURANÇA INTERNA DOS ESTADOS UNIDOS</h5>
+                    <h5 class="fw-bold text-center">FEDERAL BUREAU OF INVESTIGATION</h5>
+                </div>
+                <div class="col-2">
+                    <img class="text-start" src="img/fbi_brasao.png" alt="Brasão do FBI" width="97%">
+                </div>
+                
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h5 class="text-center">DEPARTAMENTO DE INVESTIGAÇÕES FEDERAIS</h5>
+                    <h5 class="text-center">COMARCA DE LAS VENTURAS</h5>
+                    <h5 id="tipMandado" class="fw-bold text-center"></h5>
+                </div>
+                <hr class="my-3">
+            </div>
+            <div id="paragrafo1" class="mt-4">
+                <div class="row mb-3 justify-content-center">
+                    <div class="col-md-6">
+                        <p id="oficioN"></p>
+                    </div>
+                    <div class="col-md-5">
+                        <p id="dataAtual" class="text-end fst-italic"></p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-11">
+                        <label>A Sua senhoria o Senhor</label><br>
+                        <label class="fw-bold" id="nomeResp"></label><br>
+                        <label>Evolution America/EUA.</label>
+                    </div>
+                </div>
+                <div class="row mt-4 justify-content-center">
+                    <div class="col-md-11">
+                        <label>Assunto:</label>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-11">
+                        <p id="ref"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="paragrafo2" class="mt-4">
+                <div class="row mt-3 justify-content-center">
+                    <div class="col-md-11">
+                        <p id="p1"></p>
+                    </div>
+                </div>
+                <div class="row mb-2 justify-content-center">
+                    <div class="col-md-11">
+                        <p id="p2"></p>    
+                    </div>
+                </div>
+                <div class="row mb-2 justify-content-center">
+                    <div class="col-md-11">
+                        <p id="p3"><b>DETERMINO</b> que seja feito o cumprimento deste mandado dentro do prazo de 03(TRÊS) dias corridos a contar da data do recebimento deste, seja ele recebido por impresso ou por imagem.</p>
+                    </div>
+                </div>
+                <div class="row mb-2 justify-content-center">
+                    <div class="col-md-11">
+                        <p id="p4"></p>
+                    </div>
+                </div>
+            </div>
+            <div class='row justify-content-center mt-3'>
+                <div class="col-12 text-center">
+                    <label><b>QUE SE CUMPRA</b> nos termos e nas formas da lei.</label>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-5">
+                <div class="col-4 ms-3 assinaturas">
+                    <p class="assinaturaResp" id="assinaturaResp"></p>
+                    <hr>
+                    <p class="fw-bold">Assinatura do Responsável pelo Mandado</p>
+                </div>
+            </div>
+        </section>
+        <section id="hideOnPrint">
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h3 class="text-center">Mandado de Busca e Apreensão/Prisão</h3>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-center">Preencha abaixo os dados do preso em flagrante.</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <h5>Dados do Cidadão:</h5>
+                <div class="col-md-2 col-sm-12">
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label">RG:</label>
+                        <input type="email" class="form-control" id="rgPessoa" placeholder="RG:">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label">Nome:</label>
+                        <input type="email" class="form-control" id="nomePessoa" placeholder="Insira o nome do reú:">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label">Nº Do Ofício:</label>
+                        <input type="email" class="form-control" id="nOficio" placeholder="Insira o número do ofício:">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <label for="exampleFormControlInput1" class="form-label">Tipo de Mandado:</label>
+                        <select class="form-select" name="tipoMandado" id="tipoMandado">
+                            <option value="">Selecione um Tipo</option>
+                            <option value="Prisão">Prisão</option>
+                            <option value="Busca e Apreensão">Busca e Apreensão</option>
+                            <option value="Revisão de Bens">Revisão de Bens</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-md-6">
+                    <label for="respPrisao" class="form-label">Responsável pelo Mandado:</label>
+                    <select class="form-select form-select mb-3" name="respPrisao" id="respPrisao">
+                        <option value="">Selecione um responsável</option>
+                          <option value="Delegado-1">Delegado-1</option>
+                          <option value="Delegado-2">Delegado-2</option>
+                          <option value="Delegado-3">Delegado-3</option>
+                          <option value="Delegado-4">Delegado-4</option>
+                          <option value="Delegado-5">Delegado-5</option>
+                          <option value="Delegado-6">Delegado-6</option>
+                          <option value="Teste">Teste</option>
+                      </select>
+                </div>
+            </div>
+            <!-- Codigo penal -->
+            <section class="visible">
+                <div id="codigoPenal">
+                    <div class="row mt-5">
+                        <h5>Artigos:</h5>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="33">
+                                <label class="form-check-label">
+                          Trafico de Drogas - Artigo 33
+                        </label>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="18">
+                                <label class="form-check-label">
+                                    Trafico de Armas - Art.18
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="331">
+                                <label class="form-check-label">
+                                    Desacato - Art.331
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="306">
+                                <label class="form-check-label">
+                                    Direção Perigosa - Art.306
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="329">
+                                <label class="form-check-label">
+                                    Resistência a Prisão - Art.329
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="148">
+                                <label class="form-check-label">
+                                    Sequestro e Cárcere Privado - Art.148
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="14">
+                                <label class="form-check-label">
+                                    Porte Ilegal de Arma De Fogo - Art.14
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="155">
+                                <label class="form-check-label">
+                                    Furto - Art.155
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4"> 
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="157">
+                                <label class="form-check-label">
+                                    Roubo - Art.157
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="163">
+                                <label class="form-check-label">
+                                    Vandalismo - Art.163
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="121">
+                                <label class="form-check-label">
+                                    Tentativa de Homicídio - Art.121
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="363">
+                                <label class="form-check-label">
+                                    Suborno - Art.363
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="178">
+                                <label class="form-check-label">
+                                    Fuga Evasão - Art.178
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="147">
+                                <label class="form-check-label">
+                                    Ameaça - Art.147
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="4">
+                                <label class="form-check-label">
+                                    Abuso de autoridade - Art.4
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="121">
+                                <label class="form-check-label">
+                                    Homicídio - Art.121
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="129">
+                                <label class="form-check-label">
+                                    Agressão - Art.129
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="333">
+                                <label class="form-check-label">
+                                    Corrupção - Art.333
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="330">
+                                <label class="form-check-label">
+                                    Desobediência a Ordem Policial - Art.330
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="287">
+                                <label class="form-check-label">
+                                    Fazer, publicamente, apologia de fato criminoso - Art.287
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="158">
+                                <label class="form-check-label">
+                                    Extorsão - Art.158
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="171">
+                                <label class="form-check-label">
+                                    Estelionato - Art.171
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="180">
+                                <label class="form-check-label">
+                                    Receptação - Art.180
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="138">
+                                <label class="form-check-label">
+                                    Calunia - Art.138
+                                </label>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="139">
+                                <label class="form-check-label">
+                                    Difamação - Art.139
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="140">
+                                <label class="form-check-label">
+                                    Injuria - Art.140
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="136">
+                                <label class="form-check-label">
+                                    Maus Tratos - Art.136
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="168">
+                                <label class="form-check-label">
+                                    Apropriação Indébita - Art.168
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="184">
+                                <label class="form-check-label">
+                                    Violação de Direito Autoral - Art.184
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1">
+                                <label class="form-check-label">
+                                    Lavagem de Dinheiro - Art.1
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="288">
+                                <label class="form-check-label">
+                                    Formação de quadrilha -  Art. 288
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="27">
+                                <label class="form-check-label">
+                                    Cumplicidade - Art. 27
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="173">
+                                <label class="form-check-label">
+                                    Disputar corridas ilegais - Art. 173
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="01">
+                                <label class="form-check-label">
+                                    Assalto a Joalheria - Art. 01
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="244">
+                                <label class="form-check-label">
+                                    Empinar moto - Art. 244
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="175">
+                                <label class="form-check-label">
+                                    Realizar manobras perigosas em vias públicas - Art. 175
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="334">
+                                <label class="form-check-label">
+                                    Importar ou exportar mercadoria proibida - Art. 334
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="299">
+                                <label class="form-check-label">
+                                    Falsidade ideológica - Art. 299
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="216">
+                                <label class="form-check-label">
+                                    Assédio sexual - Art. 216
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="153">
+                                <label class="form-check-label">
+                                    Divulgar informações sigilosas ou reservadas - Art.153
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="row my-5 ">
+                <div class="col-12 d-grid">
+                    <button type="button" id="btnGerar" class="btn btn-info" onclick="elaborarMandado()">Gerar documento.</button>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

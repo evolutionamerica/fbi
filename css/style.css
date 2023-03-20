@@ -1,0 +1,31 @@
+/* Fontes */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;700&amp;display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&amp;display=swap');
+#showOnPrint {
+    font-family: 'IBM Plex Serif', serif;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.assinaturaResp {
+    font-family: 'Homemade Apple', cursive !important;
+    font-size: 25px;
+    margin: 0;
+    text-align: center;
+}
+
+.assinaturas hr {
+    margin: 0;
+}
+
+.assinaturas {
+    text-align: center;
+}
+
+p#p1:first-letter, p#p2:first-letter {
+    margin-left: 2em;
+}
